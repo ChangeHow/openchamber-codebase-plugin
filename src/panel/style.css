@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  color: var(--oc-fg);
+  background: var(--oc-bg);
+  font-family: var(--oc-font);
+  font-size: 0.875rem;
+}
+main {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+.controls,
+.actions {
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.controls > :first-child {
+  flex: 1;
+  min-width: 10rem;
+}
+.section {
+  display: grid;
+  gap: 0.5rem;
+}
+.section > h2 {
+  font-size: 0.875rem;
+  margin: 0;
+}
+.note {
+  margin: 0;
+  color: var(--oc-muted);
+}
+.status {
+  min-height: 1.25rem;
+  margin: 0;
+}
+.description,
+.comment {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 0;
+  font: inherit;
+}
+.comment-row {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 0.75rem;
+  background: var(--oc-muted-surface);
+  padding-inline: 0.75rem;
+  border-radius: var(--oc-radius);
+}
+.metadata {
+  font-size: 0.75rem;
+  color: var(--oc-muted);
+  margin: 0;
+}

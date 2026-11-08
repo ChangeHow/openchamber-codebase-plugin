@@ -1,0 +1,68 @@
+{
+  "name": "@touchstone-js/openchamber-codebase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CLI-backed Codebase extension example for OpenChamber.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && rsbuild build && tsc -p tsconfig.service.json && node scripts/package.mjs",
+    "dev": "npm run build && node dist/demo/server.js",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "lint": "oxlint --type-aware --quiet . && rslint .",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:local": "node dist/service/smoke.js",
+    "test": "rstest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@openchamber/sdk": "2.7.0"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "2.0.7",
+    "@rslint/core": "0.10.0",
+    "@rstest/core": "0.10.2",
+    "@types/node": "22.13.14",
+    "oxfmt": "0.48.0",
+    "oxlint": "1.63.0",
+    "oxlint-tsgolint": "0.22.1",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "openchamber": {
+    "apiVersion": 1,
+    "engines": {
+      "openchamber": ">=2.7.0"
+    },
+    "id": "codebase-cli-example",
+    "name": "Codebase CLI Example",
+    "icon": "git-merge",
+    "contributes": {
+      "panel": {
+        "entry": "dist/index.html"
+      },
+      "attach": "dialog",
+      "commands": [
+        {
+          "name": "codebase-mr",
+          "description": "Attach an MR: repository/path number"
+        },
+        {
+          "name": "codebase-ci",
+          "description": "Attach CLI instructions for an MR's checks"
+        }
+      ],
+      "service": {
+        "entry": "dist/service/main.js",
+        "runtime": "host",
+        "permissions": {
+          "exec": [
+            "codebase"
+          ]
+        }
+      }
+    }
+  }
+}
